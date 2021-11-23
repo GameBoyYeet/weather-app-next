@@ -1,6 +1,7 @@
 // Create a folder components for every components that are not pages
 // Convention is to use lowercase for pages and uppercase for components 
 import Nav from "./Nav"
+import Header from "./Header"
 import styles from '../styles/Layout.module.css'
 
 const Layout = ({children}) => {
@@ -9,8 +10,10 @@ const Layout = ({children}) => {
         <Nav/ >
         <div className={styles.container}>
             <main className={styles.main}>
-                {children}
+               <Header />
+               {children}
             </main>
+            
             
         </div>
         </>
