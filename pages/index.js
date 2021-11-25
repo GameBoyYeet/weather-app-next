@@ -9,6 +9,16 @@ export default function Home({ stations }) {
 
   // Display selected value
   const [id, setID] = useState();
+  const [station, setStation] = useState([]); 
+  console.log(station)
+
+  const getStation = async (id) => {
+    const res = await fetch (`https://apis.is/weather/observations/en?stations=${id}`)
+    const data = await res.json();
+    setStation(data.results)
+    setID(id)
+  }
+  
 
   return (
     // Have to have a single parent element but does not have to be a div
@@ -22,7 +32,7 @@ export default function Home({ stations }) {
       <h1>Selet the city</h1>
 
       <SelectSearch
-          onChange={setID}
+          onChange={getStation}
           value={id}
           options={[]}
           getOptions={() => {
@@ -43,22 +53,22 @@ export default function Home({ stations }) {
 
       <h3>You have selected: {id}</h3>
 
-        {stations.map(((station) => <h3>{station.name}</h3>
+        {station.map(((station) => <h3>{station.name}</h3>
         ))}
 
     </div>
   )
 }
 
-export const getStaticProps = async () => {
-  const res = await fetch (`https://apis.is/weather/observations/en?stations=1`)
-  const data = await res.json();
-  const stations = data.results
+// export const getServerSideProps = async (context) => {
+//   const res = await fetch (`https://apis.is/weather/observations/en?stations=${context.query.stations}`)
+//   const data = await res.json();
+//   const stations = data.results
 
-  return {
-    props: {
-      stations
-    }
-  }
+//   return {
+//     props: {
+//       stations
+//     }
+//   }
 
-}
+// }
