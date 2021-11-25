@@ -1,17 +1,15 @@
 import Head from 'next/head'
+import React, { useEffect, useState } from "react";
+import SelectSearch from 'react-select-search';
 
-const about = () => {
+const about = (props) => {
+
     return (
-        <div>
-            
-            <head> 
-                <title>About</title>
-            </head>
-        
-            <h1>About</h1>
-
-        </div>
-    )
+        <>
+           <h1>About</h1>
+        </>
+    );
 }
+
 
 export default about
