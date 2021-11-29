@@ -4,13 +4,13 @@ import fuzzySearch from "../components/fuzzySearch"
 import React, { useEffect, useState } from "react";
 
 
-
-export default function Home({ stations }) {
+export default function Home({  }) {
 
   // Display selected value
   const [id, setID] = useState();
   const [station, setStation] = useState([]); 
-  console.log(station)
+  
+  
 
   const getStation = async (id) => {
     const res = await fetch (`https://apis.is/weather/observations/en?stations=${id}`)
@@ -51,10 +51,10 @@ export default function Home({ stations }) {
           placeholder="City"         
       />
 
-      <h3>You have selected: {id}</h3>
+        <h3>You have selected: {id} and </h3>
 
-        {station.map(((station) => <h3>{station.name}</h3>
-        ))}
+        {/* {station.map(((station) => <h3>{station.name}</h3>
+        ))} */}
 
     </div>
   )
