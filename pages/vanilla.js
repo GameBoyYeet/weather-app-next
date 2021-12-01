@@ -2,7 +2,6 @@ import Head from 'next/head'
 import { stations } from "../components/Stations"
 import React, { useEffect, useState } from "react";
 
-
 export default function Test({  }) {
 
 
@@ -13,6 +12,11 @@ export default function Test({  }) {
   return (
  
     <div>
+
+      <head> 
+        <title>Toolbar</title>
+      </head> 
+
         <form>
             <select onChange={(e)=>setName(e.target.value)}>
             {stations.map(station => (
@@ -24,12 +28,8 @@ export default function Test({  }) {
         </form>
 
         <h3>You have selected {name}</h3>
-
         
-
-
-
-
+      
     </div>
   )
 }

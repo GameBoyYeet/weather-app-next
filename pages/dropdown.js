@@ -16,10 +16,10 @@ export default function Home({  }) {
     <div>
 
       <head> 
-        <title>Test</title>
+        <title>Dropdown</title>
       </head> 
 
-      <h1>Test</h1>
+      <h1>Dropdown</h1>
 
         <DropdownMenu.Root>
 
