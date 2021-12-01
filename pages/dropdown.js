@@ -1,27 +1,43 @@
-import Head from 'next/head'
-import SelectSearch from 'react-select-search';
-import fuzzySearch from "../components/fuzzySearch"
-import { stations } from "../components/Stations"
+import Head from "next/head";
+import SelectSearch from "react-select-search";
+import fuzzySearch from "../components/fuzzySearch";
+import { stations } from "../components/Stations";
 import React, { useEffect, useState } from "react";
 // import Select from 'react-select'
-import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
+import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
+import Dropdown from "../components/Dropdown";
 
-export default function Home({  }) {
+const stationMap = {
+  "0000-0000-0000-0000": {
+    lat: "",
+    long: "",
+  },
+};
 
+export default function Home({}) {
   //Render the selected station
   const [name, setName] = useState();
 
   return (
-  
     <div>
-
-      <head> 
+      <head>
         <title>Dropdown</title>
-      </head> 
+      </head>
 
       <h1>Dropdown</h1>
 
-        <DropdownMenu.Root>
+      <Dropdown
+        options={[
+          {
+            id: "0000-0000-0000-0000",
+            text: "Reykjavík",
+          },
+        ]}
+        text="select city"
+        onSelect={(id) => stationMap[id].lat}
+      />
+
+      {/* <DropdownMenu.Root>
 
         <DropdownMenu.Trigger>Select the city</DropdownMenu.Trigger>
 
@@ -40,22 +56,17 @@ export default function Home({  }) {
 
         <h3>{name}</h3>
 
-        </DropdownMenu.Root>
+        </DropdownMenu.Root> */}
 
-
-
-
-        {/* <Select 
+      {/* <Select 
             value={id}
             onChange={setID}
             options={stations.map(({ id, name }) => ({ value: id, label: name }))} 
         />
 
         <h3>You have selected {id}</h3> */}
-
-
     </div>
-  )
+  );
 }
 
 // export const getServerSideProps = async (context) => {

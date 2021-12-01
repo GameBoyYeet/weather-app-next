@@ -23,11 +23,6 @@ const data = stations.map(station => (
 
 // Popover
 
-
-
-
-
-
 export default () => (
   <Popover.Root>
     <Popover.Trigger>Trigger</Popover.Trigger>

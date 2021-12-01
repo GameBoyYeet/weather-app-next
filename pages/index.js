@@ -51,7 +51,7 @@ export default function Home({  }) {
           placeholder="City"         
       />
 
-        <h3>You have selected: {id} and </h3>
+        <h3>You have selected: {id} </h3>
 
         {/* {station.map(((station) => <h3>{station.name}</h3>
         ))} */}
