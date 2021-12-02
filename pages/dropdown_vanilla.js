@@ -5,7 +5,7 @@ import { stations } from "../components/Stations";
 import React, { useEffect, useState } from "react";
 // import Select from 'react-select'
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
-import Dropdown from "../components/Dropdown";
+import Dropdown from "../components/Dropdown_vanilla";
 
 const stationMap = {
   hvolsvollur: {

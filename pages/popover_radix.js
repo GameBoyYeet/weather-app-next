@@ -6,11 +6,11 @@ import React, { useEffect, useState } from "react";
 // Popover
 export default () => {
 
-  const options = stations.map(station => (
-    <option value={station.name} >
-      {station.name}
-    </option>
-  ))
+  // const options = stations.map(station => (
+  //   <option value={station.name} >
+  //     {station.name}
+  //   </option>
+  // ))
 
   const [id, setID] = useState();
 
