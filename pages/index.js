@@ -12,10 +12,18 @@ export default function Home({  }) {
   
   
 
+  // const getStation = async (id) => {
+  //   const res = await fetch (`https://apis.is/weather/observations/en?stations=${id}`)
+  //   const data = await res.json();
+  //   setStation(data.results)
+  //   setID(id)
+  // }
+  const API_KEY = `c44f77911579d2cbc82efc379374400c`
+
   const getStation = async (id) => {
-    const res = await fetch (`https://apis.is/weather/observations/en?stations=${id}`)
+    const res = await fetch (`https://api.openweathermap.org/data/2.5/weather?q=${id}&appid=${API_KEY}`)
     const data = await res.json();
-    setStation(data.results)
+    setStation(data.coord)
     setID(id)
   }
   
@@ -51,7 +59,7 @@ export default function Home({  }) {
           placeholder="City"         
       />
 
-        <h3>You have selected: {id} </h3>
+        <h3>You have selected: {station.lat} </h3>
 
         {/* {station.map(((station) => <h3>{station.name}</h3>
         ))} */}
