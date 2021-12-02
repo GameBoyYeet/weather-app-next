@@ -8,11 +8,12 @@ import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import Dropdown from "../components/Dropdown";
 
 const stationMap = {
-  "0000-0000-0000-0000": {
-    lat: "",
-    long: "",
+  hvolsvollur: {
+    lon: -20.2243,
+    lat: 63.7533,
   },
 };
+
 
 export default function Home({}) {
   //Render the selected station
@@ -29,12 +30,12 @@ export default function Home({}) {
       <Dropdown
         options={[
           {
-            id: "0000-0000-0000-0000",
+            id: "hvolsvollur",
             text: "Reykjavík",
           },
         ]}
         text="select city"
-        onSelect={(id) => stationMap[id].lat}
+        onSelect={(id) => fetch(`url?lat=${stationMap[id].lat}`)}
       />
 
       {/* <DropdownMenu.Root>

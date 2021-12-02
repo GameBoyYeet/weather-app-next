@@ -6,49 +6,60 @@ export const stations = [
         name: "Keflavik",
     },
     {
-        name: "Keflavik",
-    },
-    {
         name: "Hvolsvollur",
     },
     {
-        name: "",
+        name: "Vestmannaeyjar",
     },
     {
-        name: "",
+        name: "Vik",
     },
     {
-        name: "",
+        name: "Hofn",
     },
     {
-        name: "",
+        name: "Reydarfjordur",
     },
     {
-        name: "",
+        name: "Neskaupstadur",
     },
     {
-        name: "",
+        name: "Egilsstadir",
     },
     {
-        name: "",
+        name: "Vopnafjordur",
     },
     {
-        name: "",
+        name: "Raufarhofn",
     },
     {
-        name: "",
+        name: "Husavik",
     },
     {
-        name: "",
+        name: "Akureyri",
     },
     {
-        name: "",
+        name: "Dalvik",
     },
     {
-        name: "",
+        name: "Siglufjordur",
     },
     {
-        name: "",
+        name: "Saudarkrokur",
     },
-
+    {
+        name: "Isafjordur",
+    },
+    {
+        name: "Stykkisholmur",
+    },
+    {
+        name: "Olafsvik",
+    },
+    {
+        name: "Borgarnes",
+    },
+    {
+        name: "Akranes",
+    }
 ]

@@ -1,49 +1,37 @@
 import * as Popover from '@radix-ui/react-popover';
 import * as ScrollArea from "@radix-ui/react-scroll-area";
 import { stations } from "../components/Stations";
+import React, { useEffect, useState } from "react";
 
+// Popover
+export default () => {
 
-// export default function Final() {
-//     return (
-//       <div>
-//         <Popper />
-//         <Scroll />
-//       </div>
-//     );
-//   }
-
-
-// Array
-const data = stations.map(station => (
+  const options = stations.map(station => (
     <option value={station.name} >
       {station.name}
     </option>
   ))
 
+  const [id, setID] = useState();
 
-// Popover
+  console.log(id)
 
-export default () => (
+  return (
+  <div>
   <Popover.Root>
     <Popover.Trigger>Trigger</Popover.Trigger>
-    <Popover.Content>
-        <Scroll>
-            {data}
-        </Scroll>
-        <Popover.Arrow />
+    <Popover.Content  onChange={(e)=>setID(e.target.value)} >
+            {stations.map(station => (
+              <option value={station.name} >
+                {station.name}
+              </option>
+            ))}
     </Popover.Content>
   </Popover.Root>
-);
 
+  <h3>You have selected {id}</h3>
 
-// Scroll Area
-const Scroll = ({ children }) => (
-    <div style={{ height: 250 }}>
-      <ScrollArea.Root>
-        <ScrollArea.Viewport>{children}</ScrollArea.Viewport>
-        <ScrollArea.Scrollbar>
-        </ScrollArea.Scrollbar>
-      </ScrollArea.Root>
-    </div>
-  );
+  </div>
+)};
+
   

@@ -4,9 +4,7 @@ import React, { useEffect, useState } from "react";
 
 export default function Test({  }) {
 
-
-
-    const [name, setName] = useState();
+    const [id, setID] = useState();
     console.log(stations)
 
   return (
@@ -18,7 +16,7 @@ export default function Test({  }) {
       </head> 
 
         <form>
-            <select onChange={(e)=>setName(e.target.value)}>
+            <select onChange={(e)=>setID(e.target.value)}>
             {stations.map(station => (
               <option value={station.name} >
                 {station.name}
@@ -27,7 +25,7 @@ export default function Test({  }) {
             </select>
         </form>
 
-        <h3>You have selected {name}</h3>
+        <h3>You have selected {id}</h3>
         
       
     </div>
