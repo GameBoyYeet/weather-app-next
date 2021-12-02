@@ -9,25 +9,33 @@ export const DropdownMenuDemo = () => {
 
   console.log(id)
 
+  const test = (e) => {
+    setID(e.target.innerText)
+    console.log("test")
+    console.log(e.target.innerHTML)
+  }
+
   return (
     
     <div>
     <DropdownMenu.Root>
-    <DropdownMenu.Trigger>Trigger</DropdownMenu.Trigger>
+    <DropdownMenu.Trigger>Trigger </DropdownMenu.Trigger>
 
     <DropdownMenu.Content>
       <DropdownMenu.Label>Label</DropdownMenu.Label>
-      <DropdownMenu.Item onChange={(e)=>setID(e.target.value)} >
+      
           {stations.map(station => (
-              <option value={station.name} >
+              <DropdownMenu.Item onSelect={test} value={station.name} >
                 {station.name}
-              </option>
+              </DropdownMenu.Item>
             ))}
-      </DropdownMenu.Item>
+        
+    
 
         </DropdownMenu.Content>
-
+       
   </DropdownMenu.Root>
+  
   <h3>You have selected {id}</h3>
   </div>
 
