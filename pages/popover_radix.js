@@ -17,21 +17,21 @@ export default () => {
   console.log(id)
 
   return (
-  <div>
-  <Popover.Root>
-    <Popover.Trigger>Trigger</Popover.Trigger>
-    <Popover.Content  onChange={(e)=>setID(e.target.value)} >
-            {stations.map(station => (
-              <option value={station.name} >
-                {station.name}
-              </option>
-            ))}
-    </Popover.Content>
-  </Popover.Root>
+    <div>
+      <Popover.Root>
+        <Popover.Trigger>Trigger</Popover.Trigger>
+        <Popover.Content onChange={(e) => setID(e.target.value)} >
+          {stations.map(station => (
+            <option value={station.name} >
+              {station.name}
+            </option>
+          ))}
+        </Popover.Content>
+      </Popover.Root>
 
-  <h3>You have selected {id}</h3>
+      <h3>You have selected {id}</h3>
 
-  </div>
-)};
+    </div>
+  )
+};
 
-  
