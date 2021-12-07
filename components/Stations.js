@@ -1,65 +1,76 @@
 export const stations = [
-    {
-        name: "Reykjavik"
-    },
-    {
-        name: "Keflavik",
-    },
-    {
-        name: "Hvolsvollur",
-    },
-    {
-        name: "Vestmannaeyjar",
-    },
-    {
-        name: "Vik",
-    },
-    {
-        name: "Hofn",
-    },
-    {
-        name: "Reydarfjordur",
-    },
-    {
-        name: "Neskaupstadur",
-    },
-    {
-        name: "Egilsstadir",
-    },
-    {
-        name: "Vopnafjordur",
-    },
-    {
-        name: "Raufarhofn",
-    },
-    {
-        name: "Husavik",
-    },
-    {
-        name: "Akureyri",
-    },
-    {
-        name: "Dalvik",
-    },
-    {
-        name: "Siglufjordur",
-    },
-    {
-        name: "Saudarkrokur",
-    },
-    {
-        name: "Isafjordur",
-    },
-    {
-        name: "Stykkisholmur",
-    },
-    {
-        name: "Olafsvik",
-    },
-    {
-        name: "Borgarnes",
-    },
-    {
-        name: "Akranes",
-    }
-]
+  {
+    name: "Reykjavík",
+  },
+  {
+    name: "Keflavík",
+  },
+  {
+    name: "Hvolsvöllur",
+  },
+  {
+    name: "Vestmannaeyjar",
+  },
+  {
+    name: "Vík",
+  },
+  {
+    name: "Höfn",
+  },
+  {
+    name: "Reyðarfjörður",
+  },
+  {
+    name: "Neskaupstaður",
+  },
+  {
+    name: "Egilsstaðir",
+  },
+  {
+    name: "Vopnafjörður",
+  },
+  {
+    name: "Raufarhöfn",
+  },
+  {
+    name: "Húsavík",
+  },
+  {
+    name: "Akureyri",
+  },
+  {
+    name: "Dalvík",
+  },
+  {
+    name: "Siglufjörður",
+  },
+  {
+    name: "Sauðárkrókur",
+  },
+  {
+    name: "Ísafjörður",
+  },
+  {
+    name: "Stykkishólmur",
+  },
+  {
+    name: "Ólafsvík",
+  },
+  {
+    name: "Borgarnes",
+  },
+  {
+    name: "Akranes",
+  },
+];
+
+// export const stations = [
+//     {
+//         id: "Reykjavik",
+//         name: "Reykjavík"
+//     },
+//     {
+//         id: "Keflavik",
+//         name: "Keflavík"
+//     }
+// ]

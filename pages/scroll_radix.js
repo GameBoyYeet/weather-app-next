@@ -48,12 +48,15 @@ export default ({ data }) => {
                   {data.hourly.map((hours, index) => (
                     <div className={styles.tag} data-index={index}>
                       <tag>
-                        {new Date(hours.dt * 1000).toLocaleTimeString([], {
+                        {new Date(hours.dt * 1000).toLocaleString("en-GB", {
+                          timeZone: "UTC",
+                        })}
+                        {/* {new Date(hours.dt * 1000).toLocaleTimeString([], {
                           hour: "2-digit",
                           minute: "2-digit",
-                        })}
+                        })} */}
                       </tag>
-                      <tag>{hours.temp}</tag>
+                      <tag>{Math.round(hours.temp)} °C</tag>
                     </div>
                   ))}
                 </div>
@@ -78,7 +81,7 @@ export const getStaticProps = async () => {
   const lat = 64.1355;
   const lon = -21.8954;
   const res = await fetch(
-    `${URL}?lat=${lat}&lon=${lon}&exclude=minutely,dayly&appid=${API_KEY}`
+    `${URL}?lat=${lat}&lon=${lon}&exclude=minutely,daily&appid=${API_KEY}&units=metric`
   );
 
   // to fetch the current time
