@@ -12,6 +12,7 @@ const Nav = () => {
           <Link href="/dropdown_radix">Dropdown-radix</Link>
           <Link href="/popover_radix">Popover-radix</Link>
           <Link href="/scroll_radix">Scroll-radix</Link>
+          <Link href="/slider_radix">Slider-radix</Link>
         </li>
       </ul>
     </nav>

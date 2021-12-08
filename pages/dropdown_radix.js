@@ -6,7 +6,9 @@ import React, { useEffect, useState } from "react";
 
 export const DropdownMenuDemo = () => {
   const [id, setID] = useState();
-  const [station, setStation] = useState([]);
+  const [lat, setLatitude] = useState();
+  const [lon, setLongitude] = useState();
+  // const [station, setStation] = useState([]);
   const [meteo, setMeteo] = useState({});
 
   const URL = `https://api.openweathermap.org/data/2.5/onecall`;
@@ -19,12 +21,14 @@ export const DropdownMenuDemo = () => {
     const data = await res.json();
     const latLon = data.coord;
     const res2 = await fetch(
-      `${URL}?lat=${latLon.lat}&lon=${latLon.lon}&exclude=minutely&appid=${API_KEY}&units=metric`
+      `${URL}?lat=${lat}&lon=${lon}&exclude=minutely&appid=${API_KEY}&units=metric`
     );
     const weatherRender = await res2.json();
     console.log(weatherRender);
     setMeteo(weatherRender);
-    setStation(latLon);
+    // setStation(latLon);
+    setLatitude(latLon.lat);
+    setLongitude(latLon.lon);
     setID(id);
   };
 
@@ -32,32 +36,21 @@ export const DropdownMenuDemo = () => {
     <>
       <div className={styles.main}>
         <div>
-          <DropdownMenu.Root>
-            <DropdownMenu.Trigger>Trigger </DropdownMenu.Trigger>
-            <DropdownMenu.Content>
+          <form>
+            <select onChange={(e) => getStation(e.target.value)}>
               {stations.map((station) => (
-                <DropdownMenu.Item
-                  onSelect={(e) => getStation(e.target.innerText)}
-                  value={station.name}
-                >
-                  {station.name}
-                </DropdownMenu.Item>
+                <option value={station.name}>{station.name}</option>
               ))}
-            </DropdownMenu.Content>
-          </DropdownMenu.Root>
-
-          <h4>Here is the weather for {id}</h4>
+            </select>
+          </form>
+          <h3>You have selected {id}</h3>
         </div>
-
         <div>
           <h2>Current weather</h2>
           <p>Temperature: {meteo.current?.temp} °C </p>
           <p>Feels like: {meteo.current?.feels_like} °C </p>
-          {meteo.current.weather?.map((description) => (
+          {meteo.curren?.weather.map((description) => (
             <p>{description.main}</p>
-          ))}
-          {meteo.weather?.map((description) => (
-            <h3>{description.main}</h3>
           ))}
         </div>
         <div>
