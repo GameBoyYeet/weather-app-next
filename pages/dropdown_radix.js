@@ -12,12 +12,6 @@ export const DropdownMenuDemo = () => {
   // const [station, setStation] = useState([]);
   const [meteo, setMeteo] = useState({});
 
-  // Slider to get daily weather
-  const [valueSlider, setValueSlider] = React.useState([3]);
-  const handleValueChange = (valueSlider) => {
-    setValueSlider(valueSlider);
-  };
-
   // API params
   const URL = `https://api.openweathermap.org/data/2.5/onecall`;
   const API_KEY = `c44f77911579d2cbc82efc379374400c`;
@@ -35,7 +29,7 @@ export const DropdownMenuDemo = () => {
     const data = await res.json();
     const latLon = data.coord;
     const res2 = await fetch(
-      `${URL}?lat=${lat}&lon=${lon}&exclude=minutely&appid=${API_KEY}&units=metric`
+      `${URL}?lat=${latLon.lat}&lon=${latLon.lon}&exclude=minutely&appid=${API_KEY}&units=metric`
     );
     const weatherRender = await res2.json();
     console.log(weatherRender);
@@ -46,11 +40,25 @@ export const DropdownMenuDemo = () => {
     setID(id);
   };
 
+  // Slider to get daily weather
+  const [valueSlider, setValueSlider] = React.useState([3]);
+  const handleValueChange = (valueSlider) => {
+    setValueSlider(valueSlider);
+  };
+
   return (
     <>
       <div className={styles.main}>
         <div>
           <div>
+            <p>
+              {new Date(meteo.current?.dt * 1000).toLocaleString("en-GB", {
+                weekday: "long",
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })}
+            </p>
             <form>
               <select onChange={(e) => getStation(e.target.value)}>
                 {stations.map((station) => (
@@ -58,15 +66,30 @@ export const DropdownMenuDemo = () => {
                 ))}
               </select>
             </form>
-            <h3>You have selected {id}</h3>
+            {/* <h3>You have selected {id}</h3> */}
           </div>
           <div>
             <h2>Current weather</h2>
-            <p>Temperature: {meteo.current?.temp} °C </p>
-            <p>Feels like: {meteo.current?.feels_like} °C </p>
-            {meteo.curren?.weather.map((description) => (
-              <p>{description.main}</p>
+            {meteo.current?.weather.map((description) => (
+              <p>Description: {description.main}</p>
             ))}
+            <p>Feels like: {meteo.current?.feels_like} °C </p>
+            <p>
+              Sunrise:{" "}
+              {new Date(meteo.current?.sunrise * 1000).toLocaleTimeString(
+                "en-GB",
+                { hour: "2-digit", minute: "2-digit" }
+              )}
+            </p>
+            <p>
+              Sunset:{" "}
+              {new Date(meteo.current?.sunset * 1000).toLocaleTimeString(
+                "en-GB",
+                { hour: "2-digit", minute: "2-digit" }
+              )}
+            </p>
+            <p>Temperature: {meteo.current?.temp} °C </p>
+            <p>Wind speed: {meteo.current?.wind_speed} m/s </p>
           </div>
         </div>
         <div>
@@ -103,11 +126,10 @@ export const DropdownMenuDemo = () => {
                           {new Date(hours.dt * 1000).toLocaleString("en-GB", {
                             timeZone: "UTC",
                           })}
-                          {/* {new Date(hours.dt * 1000).toLocaleTimeString([], {
-                          hour: "2-digit",
-                          minute: "2-digit",
-                        })} */}
                         </tag>
+                        {hours.weather.map((description) => (
+                          <tag>Description: {description.main}</tag>
+                        ))}
                         <tag>{Math.round(hours.temp)} °C</tag>
                       </div>
                     ))}
