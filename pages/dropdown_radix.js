@@ -1,5 +1,6 @@
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import * as ScrollArea from "@radix-ui/react-scroll-area";
+import * as Slider from "@radix-ui/react-slider";
 import { stations } from "../components/Stations";
 import styles from "../styles/Scroll.module.css";
 import React, { useEffect, useState } from "react";
@@ -11,9 +12,22 @@ export const DropdownMenuDemo = () => {
   // const [station, setStation] = useState([]);
   const [meteo, setMeteo] = useState({});
 
+  // Slider to get daily weather
+  const [valueSlider, setValueSlider] = React.useState([3]);
+  const handleValueChange = (valueSlider) => {
+    setValueSlider(valueSlider);
+  };
+
+  // API params
   const URL = `https://api.openweathermap.org/data/2.5/onecall`;
   const API_KEY = `c44f77911579d2cbc82efc379374400c`;
 
+  // To set the station already on a selected city
+  useEffect(() => {
+    getStation("Reykjavik");
+  }, []);
+
+  // API call to get coords to pass it into another API to get the weather
   const getStation = async (id) => {
     const res = await fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${id}&appid=${API_KEY}`
@@ -36,22 +50,45 @@ export const DropdownMenuDemo = () => {
     <>
       <div className={styles.main}>
         <div>
-          <form>
-            <select onChange={(e) => getStation(e.target.value)}>
-              {stations.map((station) => (
-                <option value={station.name}>{station.name}</option>
-              ))}
-            </select>
-          </form>
-          <h3>You have selected {id}</h3>
+          <div>
+            <form>
+              <select onChange={(e) => getStation(e.target.value)}>
+                {stations.map((station) => (
+                  <option value={station.name}>{station.name}</option>
+                ))}
+              </select>
+            </form>
+            <h3>You have selected {id}</h3>
+          </div>
+          <div>
+            <h2>Current weather</h2>
+            <p>Temperature: {meteo.current?.temp} °C </p>
+            <p>Feels like: {meteo.current?.feels_like} °C </p>
+            {meteo.curren?.weather.map((description) => (
+              <p>{description.main}</p>
+            ))}
+          </div>
         </div>
         <div>
-          <h2>Current weather</h2>
-          <p>Temperature: {meteo.current?.temp} °C </p>
-          <p>Feels like: {meteo.current?.feels_like} °C </p>
-          {meteo.curren?.weather.map((description) => (
-            <p>{description.main}</p>
-          ))}
+          <h2>Daily weather</h2>
+          <p>Value: {valueSlider}</p>
+          <div className={styles.returnDiv}>
+            <form>
+              <Slider.Root
+                className={styles.slider}
+                step={0.1} // HERE
+                min={0}
+                max={5}
+                value={valueSlider}
+                onValueChange={handleValueChange}
+              >
+                <Slider.Track className={styles.sliderTrack}>
+                  <Slider.Range />
+                </Slider.Track>
+                <Slider.Thumb className={styles.sliderThumb} />
+              </Slider.Root>
+            </form>
+          </div>
         </div>
         <div>
           <h2>Hourly weather</h2>
