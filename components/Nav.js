@@ -13,6 +13,7 @@ const Nav = () => {
           <Link href="/popover_radix">Popover-radix</Link>
           <Link href="/scroll_radix">Scroll-radix</Link>
           <Link href="/slider_radix">Slider-radix</Link>
+          <Link href="/test">test</Link>
         </li>
       </ul>
     </nav>

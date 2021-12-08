@@ -5,7 +5,7 @@ import { stations } from "../components/Stations";
 import styles from "../styles/Scroll.module.css";
 import React, { useEffect, useState } from "react";
 
-export const DropdownMenuDemo = () => {
+export const test = () => {
   const [id, setID] = useState();
   // const [lat, setLatitude] = useState();
   // const [lon, setLongitude] = useState();
@@ -42,7 +42,7 @@ export const DropdownMenuDemo = () => {
 
   // Slider to get daily weather
   const [valueSlider, setValueSlider] = React.useState([
-    meteo.daily && meteo.daily[0].dt,
+    meteo.hourly && meteo.hourly[0].dt,
   ]);
   const handleValueChange = (valueSlider) => {
     setValueSlider(valueSlider);
@@ -116,8 +116,8 @@ export const DropdownMenuDemo = () => {
               <Slider.Root
                 className={styles.slider}
                 step={86400} // HERE
-                min={meteo.daily && meteo.daily[0].dt}
-                max={meteo.daily && meteo.daily[7].dt}
+                min={meteo.hourly && meteo.hourly[0].dt}
+                max={meteo.hourly && meteo.hourly[47].dt}
                 value={valueSlider}
                 onValueChange={handleValueChange}
               >
@@ -164,6 +164,7 @@ export const DropdownMenuDemo = () => {
               className={styles.Scrollbar}
             >
               <ScrollArea.Thumb className={styles.Thumb} />
+              
             </ScrollArea.Scrollbar>
           </ScrollArea.Root>
         </div>
@@ -172,4 +173,4 @@ export const DropdownMenuDemo = () => {
   );
 };
 
-export default DropdownMenuDemo;
+export default test;
